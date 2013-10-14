@@ -5,19 +5,18 @@
     "description": "Styledocco stylesheets documentation tool support for phantomizer",
     "keywords": "",
     "bugs": {
-        "url" : "http://github.com/maboiteaspam/phantomizer-styledocco/issues",
-        "email" : "none@host.com"
+        "url": "http://github.com/maboiteaspam/phantomizer-styledocco/issues",
+        "email": "none@host.com"
     },
-    "license" : "mit",
-    "repository" :{
-        "type" : "git",
-        "url" : "http://github.com/maboiteaspam/phantomizer-styledocco.git"
+    "license": "mit",
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/maboiteaspam/phantomizer-styledocco.git"
     },
     "dependencies": {
         "grunt": "0.4.x",
         "optimist": "0.4.x",
         "styledocco": "0.6.x"
     },
-    "devDependencies": {
-}
+    "devDependencies": {}
 }
