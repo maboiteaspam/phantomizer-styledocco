@@ -11,9 +11,9 @@ module.exports = function(grunt) {
         var done = this.async();
 
         var options = this.options({
-            "basePath":"<%= project_dir %>",
-            "src_pattern":["<%= src_dir %>**/*.css","<%= wbm_dir %>**/*.css"],
-            "out_dir":"<%= documentation_dir %>/css/",
+            "basePath":"",
+            "src_pattern":[],
+            "out_dir":"",
             verbose:true
         });
 
