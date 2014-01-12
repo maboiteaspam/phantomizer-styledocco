@@ -46,6 +46,7 @@ module.exports = function(grunt) {
         doccooptions.in = grunt.file.expand({}, paths);
         if( doccooptions.in.length == 0 ){
             grunt.log.warn("Files not found in "+paths)
+            return done(true);
         }
         doccooptions.verbose = options.verbose;
 
