@@ -15,6 +15,12 @@ Find out more about Phantomizer
 
 http://github.com/maboiteaspam/phantomizer
 
+# Documentation Index
+
+http://maboiteaspam.github.io/phantomizer-styledocco/
+
+http://maboiteaspam.github.io/phantomizer-styledocco/documentation/build.html
+
 
 #### Example config
 
