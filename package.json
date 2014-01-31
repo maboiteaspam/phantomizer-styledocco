@@ -1,27 +1,28 @@
 {
-    "name": "phantomizer-styledocco",
-    "version": "0.1.4",
-    "private": true,
-    "description": "Styledocco stylesheets documentation tool support for phantomizer",
-    "keywords": "",
-    "bugs": {
-        "url": "http://github.com/maboiteaspam/phantomizer-styledocco/issues",
-        "email": "none@host.com"
-    },
-    "license": "mit",
-    "repository": {
-        "type": "git",
-        "url": "http://github.com/maboiteaspam/phantomizer-styledocco.git"
-    },
-    "dependencies": {
-        "grunt": "0.4.x",
-        "optimist": "0.4.x",
-        "styledocco": "0.6.x"
-    },
-    "devDependencies": {
-        "docco": "jashkenas/docco",
-        "grunt-docco": "DavidSouther/grunt-docco",
-        "grunt-gh-pages": "~0.9.0",
-        "wrench": "~1.5.6"
-    }
+  "name": "phantomizer-styledocco",
+  "version": "0.1.5",
+  "private": true,
+  "description": "Styledocco stylesheets documentation tool support for phantomizer",
+  "keywords": "",
+  "bugs": {
+    "url": "http://github.com/maboiteaspam/phantomizer-styledocco/issues",
+    "email": "none@host.com"
+  },
+  "license": "mit",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/maboiteaspam/phantomizer-styledocco.git"
+  },
+  "dependencies": {
+    "grunt": "0.4.x",
+    "optimist": "0.4.x",
+    "styledocco": "0.6.x"
+  },
+  "devDependencies": {
+    "docco": "jashkenas/docco",
+    "grunt-docco": "DavidSouther/grunt-docco",
+    "grunt-release": "geddski/grunt-release",
+    "grunt-gh-pages": "~0.9.0",
+    "wrench": "~1.5.6"
+  }
 }
