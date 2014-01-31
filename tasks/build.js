@@ -30,7 +30,7 @@ module.exports = function(grunt) {
         }
 
 // initialize output directory
-        grunt.file.mkdir(output)
+        grunt.file.mkdir(out_dir)
 
 // Create doccooptions
         var doccooptions = {}
