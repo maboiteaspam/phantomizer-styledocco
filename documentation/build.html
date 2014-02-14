@@ -27,20 +27,20 @@
 
 module.exports = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(grunt)</span> {</span>
 
-    <span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
-    <span class="hljs-keyword">var</span> optimist = <span class="hljs-built_in">require</span>(<span class="hljs-string">'optimist'</span>);
-    <span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
+  <span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+  <span class="hljs-keyword">var</span> optimist = <span class="hljs-built_in">require</span>(<span class="hljs-string">'optimist'</span>);
+  <span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>);
 
 
-    grunt.registerTask(<span class="hljs-string">"phantomizer-styledocco"</span>, <span class="hljs-string">""</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
-        <span class="hljs-keyword">var</span> done = <span class="hljs-keyword">this</span>.async();
+  grunt.registerTask(<span class="hljs-string">"phantomizer-styledocco"</span>, <span class="hljs-string">""</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> {</span>
+    <span class="hljs-keyword">var</span> done = <span class="hljs-keyword">this</span>.async();
 
-        <span class="hljs-keyword">var</span> options = <span class="hljs-keyword">this</span>.options({
-            <span class="hljs-string">"basePath"</span>:<span class="hljs-string">""</span>,
-            <span class="hljs-string">"src_pattern"</span>:[],
-            <span class="hljs-string">"out_dir"</span>:<span class="hljs-string">""</span>,
-            verbose:<span class="hljs-literal">true</span>
-        });</pre></div>
+    <span class="hljs-keyword">var</span> options = <span class="hljs-keyword">this</span>.options({
+      <span class="hljs-string">"basePath"</span>:<span class="hljs-string">""</span>,
+      <span class="hljs-string">"src_pattern"</span>:[],
+      <span class="hljs-string">"out_dir"</span>:<span class="hljs-string">""</span>,
+      verbose:<span class="hljs-literal">true</span>
+    });</pre></div>
         
       
         
@@ -52,63 +52,63 @@ module.exports = <span class="hljs-function"><span class="hljs-keyword">function
         <p>Normalizes options to pass to StyleDocco.</p>
 
         
-          <div class='highlight'><pre>        <span class="hljs-keyword">var</span> paths = [];
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> n <span class="hljs-keyword">in</span> options.src_pattern ) paths.push( path.normalize(options.src_pattern[n]) )
-        <span class="hljs-keyword">var</span> out_dir = path.normalize(options.out_dir);</pre></div>
+          <div class='highlight'><pre>    <span class="hljs-keyword">var</span> paths = [];
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> n <span class="hljs-keyword">in</span> options.src_pattern ) paths.push( path.normalize(options.src_pattern[n]) )
+    <span class="hljs-keyword">var</span> out_dir = path.normalize(options.out_dir);</pre></div>
         
       
         
         <p>Abort and show current version number.</p>
 
         
-          <div class='highlight'><pre>        <span class="hljs-keyword">if</span> (optimist.argv.version != <span class="hljs-literal">null</span>) {
-            <span class="hljs-keyword">return</span> console.log(<span class="hljs-string">"StyleDocco "</span> + (<span class="hljs-built_in">require</span>(<span class="hljs-string">'../package'</span>).version));
-        }</pre></div>
+          <div class='highlight'><pre>    <span class="hljs-keyword">if</span> (optimist.argv.version != <span class="hljs-literal">null</span>) {
+      <span class="hljs-keyword">return</span> console.log(<span class="hljs-string">"StyleDocco "</span> + (<span class="hljs-built_in">require</span>(<span class="hljs-string">'../package'</span>).version));
+    }</pre></div>
         
       
         
         <p>initialize output directory</p>
 
         
-          <div class='highlight'><pre>        grunt.file.mkdir(out_dir)</pre></div>
+          <div class='highlight'><pre>    grunt.file.mkdir(out_dir)</pre></div>
         
       
         
         <p>Create doccooptions</p>
 
         
-          <div class='highlight'><pre>        <span class="hljs-keyword">var</span> doccooptions = {}</pre></div>
+          <div class='highlight'><pre>    <span class="hljs-keyword">var</span> doccooptions = {}</pre></div>
         
       
         
         <p>Set project name</p>
 
         
-          <div class='highlight'><pre>        <span class="hljs-keyword">try</span> { doccooptions.name = <span class="hljs-built_in">require</span>(process.cwd() + <span class="hljs-string">'/package'</span>).name; }
-        <span class="hljs-keyword">catch</span> (ex) { doccooptions.name = <span class="hljs-string">''</span>; }
+          <div class='highlight'><pre>    <span class="hljs-keyword">try</span> { doccooptions.name = <span class="hljs-built_in">require</span>(process.cwd() + <span class="hljs-string">'/package'</span>).name; }
+    <span class="hljs-keyword">catch</span> (ex) { doccooptions.name = <span class="hljs-string">''</span>; }
 
-        doccooptions.out = out_dir;
-        doccooptions.include = [];
-        doccooptions.in = grunt.file.expand({}, paths);
-        <span class="hljs-keyword">if</span>( doccooptions.in.length == <span class="hljs-number">0</span> ){
-            grunt.log.warn(<span class="hljs-string">"Files not found in "</span>+paths)
-            <span class="hljs-keyword">return</span> done(<span class="hljs-literal">true</span>);
-        }
-        doccooptions.verbose = options.verbose;</pre></div>
+    doccooptions.out = out_dir;
+    doccooptions.include = [];
+    doccooptions.in = grunt.file.expand({}, paths);
+    <span class="hljs-keyword">if</span>( doccooptions.in.length == <span class="hljs-number">0</span> ){
+      grunt.log.warn(<span class="hljs-string">"Files not found in "</span>+paths)
+      <span class="hljs-keyword">return</span> done(<span class="hljs-literal">true</span>);
+    }
+    doccooptions.verbose = options.verbose;</pre></div>
         
       
         
         <p>Get common (absolute) path prefix of input files</p>
 
         
-          <div class='highlight'><pre>        doccooptions.basePath = path.normalize(options.basePath);</pre></div>
+          <div class='highlight'><pre>    doccooptions.basePath = path.normalize(options.basePath);</pre></div>
         
       
         
         <p>count files to process, add 1 for extra index</p>
 
         
-          <div class='highlight'><pre>        <span class="hljs-keyword">var</span> filescount = doccooptions.in.length+<span class="hljs-number">1</span>;</pre></div>
+          <div class='highlight'><pre>    <span class="hljs-keyword">var</span> filescount = doccooptions.in.length+<span class="hljs-number">1</span>;</pre></div>
         
       
         
@@ -116,79 +116,79 @@ module.exports = <span class="hljs-function"><span class="hljs-keyword">function
 so that we are able to catch doccostyle output</p>
 
         
-          <div class='highlight'><pre>        <span class="hljs-keyword">var</span> original_console = console.log;
-        <span class="hljs-keyword">var</span> total_output = <span class="hljs-string">""</span>;
-        <span class="hljs-keyword">var</span> cur_f_count = <span class="hljs-number">0</span>;</pre></div>
+          <div class='highlight'><pre>    <span class="hljs-keyword">var</span> original_console = console.log;
+    <span class="hljs-keyword">var</span> total_output = <span class="hljs-string">""</span>;
+    <span class="hljs-keyword">var</span> cur_f_count = <span class="hljs-number">0</span>;</pre></div>
         
       
         
         <p>crate finish handler to format output</p>
 
         
-          <div class='highlight'><pre>        <span class="hljs-keyword">var</span> finish = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(success, output)</span>{</span></pre></div>
+          <div class='highlight'><pre>    <span class="hljs-keyword">var</span> finish = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(success, output)</span>{</span></pre></div>
         
       
         
         <p>reset stdout writer handler</p>
 
         
-          <div class='highlight'><pre>            <span class="hljs-keyword">if</span>(!success ){
-                grunt.log.warn(output);
-            }<span class="hljs-keyword">else</span>{
-                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> n <span class="hljs-keyword">in</span> paths ){
-                    output = treat_stdout(output,paths[n].replace(<span class="hljs-string">"**/*.css"</span>,<span class="hljs-string">""</span>),out_dir);
-                }
-                grunt.log.ok(output);
-            }
-
-            console.log = original_console;
-
-            done(success)
-        };
-
-        console.log = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(in_string)</span>{</span>
-            <span class="hljs-keyword">if</span>( in_string.substring(<span class="hljs-number">0</span>,(<span class="hljs-string">"styledocco:"</span>).length) == <span class="hljs-string">"styledocco:"</span> ){
-                cur_f_count = cur_f_count+<span class="hljs-number">1</span>
-            }
-            total_output+=cur_f_count+<span class="hljs-string">"/"</span>+filescount+<span class="hljs-string">" "</span>+in_string+<span class="hljs-string">"\n"</span>;
-            <span class="hljs-keyword">if</span>( cur_f_count == filescount ){
-                finish(<span class="hljs-literal">true</span>, total_output)
-            }
+          <div class='highlight'><pre>      <span class="hljs-keyword">if</span>(!success ){
+        grunt.log.warn(output);
+      }<span class="hljs-keyword">else</span>{
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> n <span class="hljs-keyword">in</span> paths ){
+          output = treat_stdout(output,paths[n].replace(<span class="hljs-string">"**/*.css"</span>,<span class="hljs-string">""</span>),out_dir);
         }
+        grunt.log.ok(output);
+      }
 
-        <span class="hljs-keyword">try</span>{</pre></div>
+      console.log = original_console;
+
+      done(success)
+    };
+
+    console.log = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(in_string)</span>{</span>
+      <span class="hljs-keyword">if</span>( in_string.substring(<span class="hljs-number">0</span>,(<span class="hljs-string">"styledocco:"</span>).length) == <span class="hljs-string">"styledocco:"</span> ){
+        cur_f_count = cur_f_count+<span class="hljs-number">1</span>
+      }
+      total_output+=cur_f_count+<span class="hljs-string">"/"</span>+filescount+<span class="hljs-string">" "</span>+in_string+<span class="hljs-string">"\n"</span>;
+      <span class="hljs-keyword">if</span>( cur_f_count == filescount ){
+        finish(<span class="hljs-literal">true</span>, total_output)
+      }
+    }
+
+    <span class="hljs-keyword">try</span>{</pre></div>
         
       
         
         <p>run docco style</p>
 
         
-          <div class='highlight'><pre>            <span class="hljs-built_in">require</span>(<span class="hljs-string">'styledocco/cli'</span>)(doccooptions);
-        }<span class="hljs-keyword">catch</span>(ex){</pre></div>
+          <div class='highlight'><pre>      <span class="hljs-built_in">require</span>(<span class="hljs-string">'styledocco/cli'</span>)(doccooptions);
+    }<span class="hljs-keyword">catch</span>(ex){</pre></div>
         
       
         
         <p>reset stdout writer handler</p>
 
         
-          <div class='highlight'><pre>            finish(<span class="hljs-literal">false</span>,ex)
-        }
+          <div class='highlight'><pre>      finish(<span class="hljs-literal">false</span>,ex)
+    }
 
-    });</pre></div>
+  });</pre></div>
         
       
         
         <p>treat stdout ouptu to make it more compact and readable</p>
 
         
-          <div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">treat_stdout</span><span class="hljs-params">( stdout,src_path,out_path )</span>{</span>
-        <span class="hljs-keyword">var</span> retour = [];
-        stdout = stdout.split(<span class="hljs-string">"\n"</span>);
-        <span class="hljs-keyword">for</span>( <span class="hljs-keyword">var</span> n <span class="hljs-keyword">in</span> stdout ){
-            retour.push(stdout[n].replace(src_path,<span class="hljs-string">""</span>).replace(out_path,<span class="hljs-string">""</span>).replace(<span class="hljs-string">"styledocco: writing "</span>,<span class="hljs-string">""</span>))
-        }
-        <span class="hljs-keyword">return</span> retour.join(<span class="hljs-string">"\n"</span>);
+          <div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">treat_stdout</span><span class="hljs-params">( stdout,src_path,out_path )</span>{</span>
+    <span class="hljs-keyword">var</span> retour = [];
+    stdout = stdout.split(<span class="hljs-string">"\n"</span>);
+    <span class="hljs-keyword">for</span>( <span class="hljs-keyword">var</span> n <span class="hljs-keyword">in</span> stdout ){
+      retour.push(stdout[n].replace(src_path,<span class="hljs-string">""</span>).replace(out_path,<span class="hljs-string">""</span>).replace(<span class="hljs-string">"styledocco: writing "</span>,<span class="hljs-string">""</span>))
     }
+    <span class="hljs-keyword">return</span> retour.join(<span class="hljs-string">"\n"</span>);
+  }
 
 };</pre></div>
         
